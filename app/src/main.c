@@ -660,7 +660,7 @@ int main(void)
     HAL_PIN_Set(PAD_PA40, GPIO_A40, PIN_PULLDOWN, 1);
 
     // 点亮LED灯
-    HAL_PIN_Set(PAD_PA32, GPIO_A32, PIN_PULLDOEN, 1);
+    HAL_PIN_Set(PAD_PA32, GPIO_A32, PIN_PULLDOWN, 1);
 
 
 
