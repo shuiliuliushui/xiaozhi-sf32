@@ -647,6 +647,12 @@ int main(void)
     xiaozhi_time_weather_init();// Initialize time and weather
     xz_ws_audio_init(); // 初始化音频
 
+
+// // 配置PA32为GPIO输出模式并输出低电平（点亮）
+//     rt_pin_mode(32, PIN_MODE_OUTPUT);
+//     rt_pin_write(32, PIN_LOW);
+
+
 #ifdef BSP_USING_BOARD_SF32LB52_LCHSPI_ULP
     unsigned int *addr2 = (unsigned int *)0x50003088; // 21
     *addr2 = 0x00000200;
@@ -658,9 +664,6 @@ int main(void)
     BSP_GPIO_Set(30, 0, 1);
     HAL_PIN_Set(PAD_PA39, GPIO_A39, PIN_PULLDOWN, 1);
     HAL_PIN_Set(PAD_PA40, GPIO_A40, PIN_PULLDOWN, 1);
-
-    // 点亮LED灯
-    HAL_PIN_Set(PAD_PA32, GPIO_A32, PIN_PULLDOWN, 1);
 
 
 

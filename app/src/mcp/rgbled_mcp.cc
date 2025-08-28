@@ -6,7 +6,7 @@
 #include "drivers/rt_drv_pwm.h"
 #include "bf0_hal.h"
 
-#define LED_PIN 32 
+#define LED_PIN 32
 RGBLEDController& GetRGBLEDController() {
     static RGBLEDController instance;
     return instance;
@@ -47,9 +47,9 @@ void RGBLEDTool::RegisterRGBLEDTool(McpServer* server) {
             // 配置PA32为GPIO输出模式并输出低电平（点亮）
             rt_pin_mode(LED_PIN, PIN_MODE_OUTPUT);
             rt_pin_write(LED_PIN, PIN_LOW);
-#endif      
+#endif
             rt_thread_t thread = rt_thread_create("rgb_cycle",
-                            ColorCycleThreadEntry, 
+                            ColorCycleThreadEntry,
                             nullptr,
                             1024,
                             10,
@@ -65,12 +65,12 @@ void RGBLEDTool::RegisterRGBLEDTool(McpServer* server) {
         PropertyList(),
         [](const PropertyList&) -> ReturnValue {
             is_color_cycling_ = false;
-            rt_thread_mdelay(100); 
+            rt_thread_mdelay(100);
 #ifdef BSP_USING_BOARD_SF32LB52_NANO_52J
             // 对于52J板子，控制PA32引脚输出高电平熄灭LED
             rt_pin_write(LED_PIN, PIN_HIGH);
 #else
-            
+
             GetRGBLEDController().SetColor(0x000000);
 #endif
             return true;
